@@ -8,9 +8,8 @@
 class stage{
 public:
     typedef void*(Func)(void *);
-    stage(Func func){
-		_thread_p = new std::thread(func);
-    }
+   // stage(Func func){
+   // }
     ~stage(){}
 private:
     std::shared_ptr<std::mutex>                  	_mutex_p;
