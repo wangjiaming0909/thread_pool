@@ -2493,7 +2493,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-CXXFLAGS=-pthread -O0 -g -W  -Werror -Wextra -std=c++11
+CXXFLAGS="-pthread -O0 -g -W -Werror -Wextra -std=c++11"
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'

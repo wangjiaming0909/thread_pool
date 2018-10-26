@@ -6,8 +6,8 @@ echo AC_INIT\(a.out, 1.0\) >> configure.ac
 echo AM_INIT_AUTOMAKE\(subdir-objects\) >> configure.ac
 echo AC_CONFIG_SRCDIR\([main.cpp]\) >> configure.ac
 echo AC_CONFIG_HEADERS\([config.h]\) >> configure.ac
-echo CXXFLAGS="-pthread -O0 -g -W  -Werror -Wextra -std=c++11" >> configure.ac
-echo CXXFLAGS="-I/boost_1_68_0"
+echo CXXFLAGS=\"-pthread -O0 -g -W  -Werror -Wextra -std=c++11\" >> configure.ac
+echo CXXFLAGS=\"-I/boost_1_68_0\"
 echo AC_PROG_CXX >> configure.ac
 echo AC_PROG_CC >> configure.ac
 echo AC_PROG_CPP >> configure.ac
