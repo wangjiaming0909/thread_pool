@@ -102,8 +102,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__dirstamp = $(am__leading_dot)dirstamp
-am_a_out_OBJECTS = main.$(OBJEXT) src/1.$(OBJEXT)
+am_a_out_OBJECTS = main.$(OBJEXT)
 a_out_OBJECTS = $(am_a_out_OBJECTS)
 a_out_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -184,13 +183,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/jwang284/codes/thread_pool/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/missing autoconf
-AUTOHEADER = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/missing autoheader
-AUTOMAKE = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/missing automake-1.15
-AWK = mawk
+AUTOCONF = ${SHELL} /home/jwang284/codes/thread_pool/missing autoconf
+AUTOHEADER = ${SHELL} /home/jwang284/codes/thread_pool/missing autoheader
+AUTOMAKE = ${SHELL} /home/jwang284/codes/thread_pool/missing automake-1.15
+AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -198,7 +197,7 @@ CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -pthread -O0 -g -W  -Werror -Wextra -std=c++11
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -215,7 +214,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/missing makeinfo
+MAKEINFO = ${SHELL} /home/jwang284/codes/thread_pool/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = a-out
@@ -230,10 +229,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = 
 VERSION = 1.0
-abs_builddir = /home/www/Documents/test/test/3/2/thread_pool
-abs_srcdir = /home/www/Documents/test/test/3/2/thread_pool
-abs_top_builddir = /home/www/Documents/test/test/3/2/thread_pool
-abs_top_srcdir = /home/www/Documents/test/test/3/2/thread_pool
+abs_builddir = /home/jwang284/codes/thread_pool
+abs_srcdir = /home/jwang284/codes/thread_pool
+abs_top_builddir = /home/jwang284/codes/thread_pool
+abs_top_srcdir = /home/jwang284/codes/thread_pool
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
@@ -253,7 +252,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/www/Documents/test/test/3/2/thread_pool/install-sh
+install_sh = ${SHELL} /home/jwang284/codes/thread_pool/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -274,7 +273,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-a_out_SOURCES = main.cpp src/1.cpp
+a_out_SOURCES = main.cpp 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -370,13 +369,6 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-src/$(am__dirstamp):
-	@$(MKDIR_P) src
-	@: > src/$(am__dirstamp)
-src/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) src/$(DEPDIR)
-	@: > src/$(DEPDIR)/$(am__dirstamp)
-src/1.$(OBJEXT): src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 
 a.out$(EXEEXT): $(a_out_OBJECTS) $(a_out_DEPENDENCIES) $(EXTRA_a_out_DEPENDENCIES) 
 	@rm -f a.out$(EXEEXT)
@@ -384,13 +376,11 @@ a.out$(EXEEXT): $(a_out_OBJECTS) $(a_out_DEPENDENCIES) $(EXTRA_a_out_DEPENDENCIE
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f src/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/main.Po
-include src/$(DEPDIR)/1.Po
 
 .cpp.o:
 	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -663,8 +653,6 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f src/$(DEPDIR)/$(am__dirstamp)
-	-rm -f src/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -675,7 +663,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf ./$(DEPDIR) src/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -723,7 +711,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf ./$(DEPDIR) src/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -762,12 +750,6 @@ uninstall-am: uninstall-binPROGRAMS
 
 .PRECIOUS: Makefile
 
-
-####j
-#bin_PROGRAMS=a.out a_out_SOURCES=main.cpp
-
-####
-##########################################################################
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

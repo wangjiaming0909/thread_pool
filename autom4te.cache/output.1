@@ -2493,10 +2493,7 @@ fi
 
 ac_config_headers="$ac_config_headers config.h"
 
-CXXFLAGS="-pthread -O0 -g -W  -Werror -Wextra -std=c++11"
-
-
-# Checks for programs.
+CXXFLAGS=-pthread -O0 -g -W  -Werror -Wextra -std=c++11
 ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -4057,15 +4054,6 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
-
-
-# Checks for libraries.
-
-# Checks for header files.
-
-# Checks for typedefs, structures, and compiler characteristics.
-
-# Checks for library functions.
 
 ac_config_files="$ac_config_files Makefile"
 
