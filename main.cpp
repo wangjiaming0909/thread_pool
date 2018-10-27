@@ -12,7 +12,7 @@ void default_cb(){
 
 int main(){
     thread_pool pool{1};
-//    pool.add_task(print);
+    pool.add_task(print);
     pool.start();
-//    pool.stop();
+    // pool.join();
 }
