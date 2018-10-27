@@ -33,9 +33,9 @@ public:
     }
     //will we have multi threads to add_tasks?
     void add_task(const task& t){
-        log_with_thread_id("trying to get the mutex");
+        // log_with_thread_id("trying to get the mutex");
         _unique_lock.lock();
-        log_with_thread_id("get the mutex");
+        // log_with_thread_id("get the mutex");
         //put the check inside the lock??
         while(deque_full()){
             _deque_full_cv.wait(_unique_lock);
@@ -45,7 +45,7 @@ public:
         //if the deque is empty, we need to notify one thread when we add one task
         _has_task_cv.notify_one();
         _unique_lock.unlock();
-        log_with_thread_id("release the mutex");
+        // log_with_thread_id("release the mutex");
     }
     void start(){
         _running = true;
@@ -89,22 +89,20 @@ private:
     //to each thread
     void default_routine(){
         while(_running){
-            log_with_thread_id("trying to get the mutex");
-            _unique_lock.lock();
-            log_with_thread_id("get the mutex");
+            std::unique_lock<std::mutex> u_lock{_mutex, std::defer_lock};
+            u_lock.lock();
             //no task so wait
             while(!has_task()){
                 _has_task_cv.wait(_unique_lock);//unlock and block
             }
             //someone added a task to the tasks
-            std::cout << "starting to take one task" << std::endl;
+            // std::cout << "starting to take one task" << std::endl;
             task t = _tasks.front();
             _tasks.pop_front();
             _deque_full_cv.notify_one();
-            _unique_lock.unlock();
-            log_with_thread_id("release the mutex");
+            u_lock.unlock();
+
             t();
-            std::cout << "doing the task" << std::endl;
         }
     }
 private:
